@@ -109,6 +109,7 @@ coreos:
           - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
           - --runtime-config=extensions/v1beta1=true,extensions/v1beta1/networkpolicies=true
           - --anonymous-auth=false
+          - --authorization-mode=AlwaysAllow
           livenessProbe:
             httpGet:
               host: 127.0.0.1
