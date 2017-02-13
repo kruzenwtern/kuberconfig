@@ -102,7 +102,7 @@ coreos:
           - --allow-privileged=true
           - --service-cluster-ip-range=10.3.0.0/24
           - --secure-port=443
-          - --kubelet-https=true
+          - --kubelet-https=false
           - --advertise-address=192.168.253.130
           - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
           #- --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
