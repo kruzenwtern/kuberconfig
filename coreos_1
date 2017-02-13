@@ -96,20 +96,22 @@ coreos:
           command:
           - /hyperkube
           - apiserver
-          - --bind-address=0.0.0.0
+          - --insecure-bind-address=0.0.0.0
+          - --insecure-port=8080
           - --etcd-servers=http://192.168.253.130:2379,http://192.168.253.140:2379,http://192.168.253.138:2379
           - --allow-privileged=true
           - --service-cluster-ip-range=10.3.0.0/24
           - --secure-port=443
+          - --kubelet-https=true
           - --advertise-address=192.168.253.130
           - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
-          - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
-          - --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
-          - --client-ca-file=/etc/kubernetes/ssl/ca.pem
+          #- --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
+          #- --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+          #- --client-ca-file=/etc/kubernetes/ssl/ca.pem
           - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
           - --runtime-config=extensions/v1beta1=true,extensions/v1beta1/networkpolicies=true
           - --anonymous-auth=false
-          - --authorization-mode=AlwaysAllow
+          #- --authorization-mode=AlwaysAllow
           livenessProbe:
             httpGet:
               host: 127.0.0.1
